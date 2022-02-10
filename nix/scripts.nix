@@ -38,7 +38,6 @@ let
     gnugrep
     gnused
     postgresql
-    strace
     lsof
     dnsutils
     bashInteractive
@@ -47,7 +46,8 @@ let
     netcat
     bat
     tree
-  ];
+  ] ++ optional pkgs.stdenv.hostPlatform.isLinux
+    strace;
 
 in forEnvironments (environment: recurseIntoAttrs rec {
   node = mkScript environment;
