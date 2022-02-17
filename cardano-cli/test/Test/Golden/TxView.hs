@@ -5,7 +5,8 @@ module Test.Golden.TxView (txViewTests) where
 import           Cardano.Prelude
 
 import           Hedgehog (Group (..), Property, checkSequential)
-import           Hedgehog.Extras (moduleWorkspace, note_, propertyOnce)
+import           Hedgehog.Extras (Integration, moduleWorkspace, note_, propertyOnce)
+import           System.FilePath ((</>))
 
 import           Test.OptParse (execCardanoCLI, noteTempFile)
 import           Test.Utilities (diffVsGoldenFile)
@@ -21,6 +22,7 @@ txViewTests =
       , ("golden_view_allegra", golden_view_allegra)
       , ("golden_view_mary", golden_view_mary)
       , ("golden_view_alonzo", golden_view_alonzo)
+      , ("golden_view_alonzo_signed", golden_view_alonzo_signed)
       ]
 
 golden_view_byron :: Property
@@ -214,6 +216,26 @@ golden_view_mary =
         ["transaction", "view", "--tx-body-file", transactionBodyFile]
     diffVsGoldenFile result "test/data/golden/mary/transaction-view.out"
 
+createAlonzoTxBody :: Maybe FilePath -> FilePath -> Integration ()
+createAlonzoTxBody mUpdateProposalFile transactionBodyFile = do
+  void $
+    execCardanoCLI
+      (   [ "transaction", "build-raw"
+          , "--alonzo-era"
+          , "--tx-in"
+          ,   "ed7c8f68c194cc763ee65ad22ef0973e26481be058c65005fd39fb93f9c43a20\
+              \#212"
+          , "--tx-in-collateral"
+          ,   "c9765d7d0e3955be8920e6d7a38e1f3f2032eac48c7c59b0b9193caa87727e7e\
+              \#256"
+          , "--fee", "213"
+          , "--out-file", transactionBodyFile
+          ]
+      ++  [ "--update-proposal-file=" <> updateProposalFile
+          | Just updateProposalFile <- [mUpdateProposalFile]
+          ]
+      )
+
 golden_view_alonzo :: Property
 golden_view_alonzo =
   propertyOnce $
@@ -243,24 +265,36 @@ golden_view_alonzo =
           , "--out-file", updateProposalFile
           ]
 
-      -- Create transaction body
-      void $
-        execCardanoCLI
-          [ "transaction", "build-raw"
-          , "--alonzo-era"
-          , "--tx-in"
-          ,   "ed7c8f68c194cc763ee65ad22ef0973e26481be058c65005fd39fb93f9c43a20\
-              \#212"
-          , "--tx-in-collateral"
-          ,   "c9765d7d0e3955be8920e6d7a38e1f3f2032eac48c7c59b0b9193caa87727e7e\
-              \#256"
-          , "--fee", "213"
-          , "--update-proposal-file", updateProposalFile
-          , "--out-file", transactionBodyFile
-          ]
+      createAlonzoTxBody (Just updateProposalFile) transactionBodyFile
 
       -- View transaction body
       result <-
         execCardanoCLI
           ["transaction", "view", "--tx-body-file", transactionBodyFile]
       diffVsGoldenFile result "test/data/golden/alonzo/transaction-view.out"
+
+golden_view_alonzo_signed :: Property
+golden_view_alonzo_signed =
+  let testData = "test/data/golden/alonzo"
+  in
+  propertyOnce $
+    moduleWorkspace "tmp" $ \tempDir -> do
+      transactionBodyFile <- noteTempFile tempDir "transaction-body"
+      transactionFile <- noteTempFile tempDir "transaction"
+
+      createAlonzoTxBody Nothing transactionBodyFile
+
+      -- Sign
+      void $
+        execCardanoCLI
+          [ "transaction", "sign"
+          , "--tx-body-file", transactionBodyFile
+          , "--signing-key-file", testData </> "signing.key"
+          , "--out-file", transactionFile
+          ]
+
+      -- View transaction body
+      result <-
+        execCardanoCLI
+          ["transaction", "view", "--tx-file", transactionFile]
+      diffVsGoldenFile result (testData </> "signed-transaction-view.out")
