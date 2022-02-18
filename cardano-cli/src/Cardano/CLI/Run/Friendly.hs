@@ -28,7 +28,6 @@ import           Cardano.Api.Shelley (Address (ShelleyAddress),
                    KeyWitness (ShelleyBootstrapWitness, ShelleyKeyWitness), StakeAddress (..))
 import           Cardano.Ledger.Crypto (Crypto)
 import qualified Cardano.Ledger.Shelley.API as Shelley
--- import           Cardano.Ledger.Shelley.TxBody (WitVKey (..))
 
 import           Cardano.CLI.Helpers (textShow)
 
