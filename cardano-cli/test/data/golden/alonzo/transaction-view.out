@@ -9,6 +9,7 @@ inputs:
 metadata: null
 mint: null
 outputs: []
+required signers (payment key hashes needed for scripts): null
 update proposal:
   epoch: 190
   updates:
@@ -31,4 +32,3 @@ validity range:
   lower bound: null
   upper bound: null
 withdrawals: null
-witnesses-extra (payment key hashes needed for scripts): null

@@ -9,6 +9,7 @@ inputs:
 metadata: null
 mint: null
 outputs: []
+required signers (payment key hashes needed for scripts): null
 update proposal: null
 validity range:
   lower bound: null
@@ -17,4 +18,3 @@ withdrawals: null
 witnesses:
 - key: VKey (VerKeyEd25519DSIGN "84ce03e08b05533685d593c14cd6ca5c7485824156ca11fb303ddac9dd3ef41c")
   signature: SignedDSIGN (SigEd25519DSIGN "43ba6ad41b2999d0601918fdd1119e040260116b5b554fbf0a6db576cbe9663a0ede19d9f6767e067900b32e9c0f61b4894379e0e9db8fcaf2fe0aa6b260830a")
-witnesses-extra (payment key hashes needed for scripts): null

@@ -82,11 +82,11 @@ friendlyTxBody
     , "metadata" .= friendlyMetadata txMetadata
     , "mint" .= friendlyMintValue txMintValue
     , "outputs" .= map friendlyTxOut txOuts
+    , "required signers (payment key hashes needed for scripts)" .=
+        friendlyExtraKeyWits txExtraKeyWits
     , "update proposal" .= friendlyUpdateProposal txUpdateProposal
     , "validity range" .= friendlyValidityRange era txValidityRange
     , "withdrawals" .= friendlyWithdrawals txWithdrawals
-    , "required signers (payment key hashes needed for scripts)" .=
-        friendlyExtraKeyWits txExtraKeyWits
     ]
 
 friendlyExtraKeyWits :: TxExtraKeyWitnesses era -> Aeson.Value
