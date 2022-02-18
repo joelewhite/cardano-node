@@ -85,7 +85,7 @@ friendlyTxBody
     , "update proposal" .= friendlyUpdateProposal txUpdateProposal
     , "validity range" .= friendlyValidityRange era txValidityRange
     , "withdrawals" .= friendlyWithdrawals txWithdrawals
-    , "witnesses-extra (payment key hashes needed for scripts)" .=
+    , "required signers (payment key hashes needed for scripts)" .=
         friendlyExtraKeyWits txExtraKeyWits
     ]
 
