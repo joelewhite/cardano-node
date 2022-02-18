@@ -45,7 +45,7 @@ friendlyKeyWitness :: KeyWitness era -> Aeson.Value
 friendlyKeyWitness =
   object
   . \case
-      ByronKeyWitness txInWitness -> ["input witness" .= textShow txInWitness]
+      ByronKeyWitness txInWitness -> ["Byron witness" .= textShow txInWitness]
       ShelleyBootstrapWitness _era bootstrapWitness ->
         ["bootstrap witness" .= textShow bootstrapWitness]
       ShelleyKeyWitness _era (Shelley.WitVKey key signature) ->
