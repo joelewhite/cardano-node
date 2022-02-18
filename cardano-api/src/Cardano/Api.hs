@@ -138,7 +138,7 @@ module Cardano.Api (
     -- * Blocks
 
     -- ** Blocks in the context of an era
-    Block(Block),
+    Block(..),
     BlockHeader(..),
     getBlockHeader,
 
