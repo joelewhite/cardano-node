@@ -5,6 +5,7 @@ where
 
 import           Prelude
 import           GHC.Generics
+import           GHC.Natural
 import           Data.Aeson
 import           Data.List.NonEmpty
 
@@ -20,6 +21,7 @@ parseNixServiceOptions = parseJSONFile fromJSON
 data NixServiceOptions = NixServiceOptions {
     _nix_debugMode        :: Bool
   , _nix_tx_count         :: NumberOfTxs
+  , _nix_tps              :: TPSRate
   , _nix_inputs_per_tx    :: NumberOfInputsPerTx
   , _nix_outputs_per_tx   :: NumberOfOutputsPerTx
   , _nix_tx_fee           :: Lovelace
@@ -29,12 +31,12 @@ data NixServiceOptions = NixServiceOptions {
   , _nix_plutusAutoMode   :: Bool
   , _nix_plutusLoopScript :: FilePath
   , _nix_era              :: AnyCardanoEra
---  , _nix_plutusMode       :: Bool
---  , _nix_plutusScript     :: String
---  , _nix_plutusData       :: Integer
---  , _nix_plutusRedeemer   :: Integer
---  , _nix_executionMemory  :: Integer
---  , _nix_executionSteps   :: Integer
+  , _nix_plutusMode       :: Bool
+  , _nix_plutusScript     :: String
+  , _nix_plutusData       :: Integer
+  , _nix_plutusRedeemer   :: Integer
+  , _nix_executionMemory  :: Natural
+  , _nix_executionSteps   :: Natural
   , _nix_nodeConfigFile       :: FilePath
   , _nix_sigKey               :: SigningKeyFile
   , _nix_localNodeSocketPath  :: String
