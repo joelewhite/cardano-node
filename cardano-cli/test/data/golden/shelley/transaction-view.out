@@ -45,3 +45,4 @@ withdrawals:
   credential:
     key hash: 5ef488bf2021484ad03aaca56402f74b0193656121240637573aa62b
   network: Testnet
+witnesses-extra (payment key hashes needed for scripts): null

@@ -21,3 +21,4 @@ validity range:
   lower bound: null
   upper bound: 101
 withdrawals: null
+witnesses-extra (payment key hashes needed for scripts): null

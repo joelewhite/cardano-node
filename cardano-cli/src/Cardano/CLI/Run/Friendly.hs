@@ -63,6 +63,7 @@ friendlyTxBody
     TxBodyContent
       { txAuxScripts
       , txCertificates
+      , txExtraKeyWits
       , txFee
       , txIns
       , txInsCollateral
@@ -85,7 +86,15 @@ friendlyTxBody
     , "update proposal" .= friendlyUpdateProposal txUpdateProposal
     , "validity range" .= friendlyValidityRange era txValidityRange
     , "withdrawals" .= friendlyWithdrawals txWithdrawals
+    , "witnesses-extra (payment key hashes needed for scripts)" .=
+        friendlyExtraKeyWits txExtraKeyWits
     ]
+
+friendlyExtraKeyWits :: TxExtraKeyWitnesses era -> Aeson.Value
+friendlyExtraKeyWits = \case
+  TxExtraKeyWitnessesNone -> Null
+  TxExtraKeyWitnesses _supported paymentKeyHashes ->
+    array $ map (toJSON . textShow) paymentKeyHashes
 
 -- | Special case of validity range:
 -- in Shelley, upper bound is TTL, and no lower bound

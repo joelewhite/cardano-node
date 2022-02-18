@@ -14,3 +14,4 @@ outputs:
 update proposal: null
 validity range: null
 withdrawals: null
+witnesses-extra (payment key hashes needed for scripts): null

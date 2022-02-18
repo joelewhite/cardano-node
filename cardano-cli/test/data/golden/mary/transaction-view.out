@@ -7,7 +7,7 @@ inputs:
 - fe5dd07fb576bff960d6e066eade5b26cdb5afebe29f76ea58d0a098bce5d891#135
 metadata: null
 mint:
-  policy 52dc3d43b6d2465e96109ce75ab61abe5e9c1d8a3c9ce6ff8a3af528:
+  policy a06ee5ffdd7f9b5bd992eb9543f44418323f81229526b77b0e4be067:
     asset 736b79 (sky): 142
     asset cafe: 132
     asset dead: 136
@@ -20,7 +20,7 @@ outputs:
   address era: Shelley
   amount:
     lovelace: 138
-    policy 52dc3d43b6d2465e96109ce75ab61abe5e9c1d8a3c9ce6ff8a3af528:
+    policy a06ee5ffdd7f9b5bd992eb9543f44418323f81229526b77b0e4be067:
       asset 736b79 (sky): 142
       asset cafe: 132
       asset dead: 136
@@ -38,3 +38,4 @@ validity range:
   lower bound: 140
   upper bound: null
 withdrawals: null
+witnesses-extra (payment key hashes needed for scripts): null

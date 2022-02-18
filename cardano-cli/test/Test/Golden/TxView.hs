@@ -174,39 +174,39 @@ golden_view_mary =
             \ + \
             \130 d441227553a0f1a965fee7d60a0f724b368dd1bddbc208730fccebcf\
             \ + \
-            \132 52dc3d43b6d2465e96109ce75ab61abe5e9c1d8a3c9ce6ff8a3af528.cafe\
+            \132 a06ee5ffdd7f9b5bd992eb9543f44418323f81229526b77b0e4be067.cafe\
             \ + \
             \134 d441227553a0f1a965fee7d60a0f724b368dd1bddbc208730fccebcf.f00d\
             \ + \
-            \136 52dc3d43b6d2465e96109ce75ab61abe5e9c1d8a3c9ce6ff8a3af528.dead\
+            \136 a06ee5ffdd7f9b5bd992eb9543f44418323f81229526b77b0e4be067.dead\
             \ + \
             \138\
               \ d441227553a0f1a965fee7d60a0f724b368dd1bddbc208730fccebcf\
               \.736e6f77\
             \ + \
             \142\
-              \ 52dc3d43b6d2465e96109ce75ab61abe5e9c1d8a3c9ce6ff8a3af528\
+              \ a06ee5ffdd7f9b5bd992eb9543f44418323f81229526b77b0e4be067\
               \.736b79"
         , "--fee", "139"
         , "--invalid-before", "140"
         , "--mint"
         ,   "130 d441227553a0f1a965fee7d60a0f724b368dd1bddbc208730fccebcf\
             \ + \
-            \132 52dc3d43b6d2465e96109ce75ab61abe5e9c1d8a3c9ce6ff8a3af528.cafe\
+            \132 a06ee5ffdd7f9b5bd992eb9543f44418323f81229526b77b0e4be067.cafe\
             \ + \
             \134 d441227553a0f1a965fee7d60a0f724b368dd1bddbc208730fccebcf.f00d\
             \ + \
-            \136 52dc3d43b6d2465e96109ce75ab61abe5e9c1d8a3c9ce6ff8a3af528.dead\
+            \136 a06ee5ffdd7f9b5bd992eb9543f44418323f81229526b77b0e4be067.dead\
             \ + \
             \138\
               \ d441227553a0f1a965fee7d60a0f724b368dd1bddbc208730fccebcf\
               \.736e6f77\
             \ + \
             \142\
-              \ 52dc3d43b6d2465e96109ce75ab61abe5e9c1d8a3c9ce6ff8a3af528\
+              \ a06ee5ffdd7f9b5bd992eb9543f44418323f81229526b77b0e4be067\
               \.736b79"
         , "--minting-script-file", "test/data/golden/mary/scripts/mint.all"
-        , "--minting-script-file", "test/data/golden/mary/scripts/mint.any"
+        , "--minting-script-file", "test/data/golden/mary/scripts/mint.sig"
         , "--out-file", transactionBodyFile
         ]
 
